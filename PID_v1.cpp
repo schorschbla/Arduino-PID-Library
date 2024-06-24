@@ -99,7 +99,7 @@ bool PID::Compute()
  * it's called automatically from the constructor, but tunings can also
  * be adjusted on the fly during normal operation
  ******************************************************************************/
-void PID::SetTunings(double Kp, double Ki, double Kd, int POn)
+void PID::SetTunings(double Kp, double Ki, double Kd, int POn, bool initialize)
 {
    if (Kp<0 || Ki<0 || Kd<0) return;
 
@@ -119,13 +119,18 @@ void PID::SetTunings(double Kp, double Ki, double Kd, int POn)
       ki = (0 - ki);
       kd = (0 - kd);
    }
+
+   if (initialize)
+   {
+      PID::Initialize();
+   }
 }
 
 /* SetTunings(...)*************************************************************
  * Set Tunings using the last-rembered POn setting
  ******************************************************************************/
 void PID::SetTunings(double Kp, double Ki, double Kd){
-    SetTunings(Kp, Ki, Kd, pOn); 
+    SetTunings(Kp, Ki, Kd, pOn, false);
 }
 
 /* SetSampleTime(...) *********************************************************

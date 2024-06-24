@@ -43,6 +43,8 @@ class PID
                                           //   of changing tunings during runtime for Adaptive control
     void SetTunings(double, double,       // * overload for specifying proportional mode
                     double, int);         	  
+    void SetTunings(double, double,       // * overload for specifying whether to re-initialize PID state
+                    double, int, bool);
 
 	void SetControllerDirection(int);	  // * Sets the Direction, or "Action" of the controller. DIRECT
 										  //   means the output will increase when error is positive. REVERSE
