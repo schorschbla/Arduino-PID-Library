@@ -126,11 +126,16 @@ void PID::SetTunings(double Kp, double Ki, double Kd, int POn, bool initialize)
    }
 }
 
+void PID::SetTunings(double Kp, double Ki, double Kd, int POn)
+{
+    SetTunings(Kp, Ki, Kd, pOn, false);
+}
+
 /* SetTunings(...)*************************************************************
  * Set Tunings using the last-rembered POn setting
  ******************************************************************************/
 void PID::SetTunings(double Kp, double Ki, double Kd){
-    SetTunings(Kp, Ki, Kd, pOn, false);
+    SetTunings(Kp, Ki, Kd, pOn);
 }
 
 /* SetSampleTime(...) *********************************************************
